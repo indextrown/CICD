@@ -13,6 +13,7 @@ struct CICDApp: App {
         WindowGroup {
             ContentView()
             
+            
         }
     }
 }
