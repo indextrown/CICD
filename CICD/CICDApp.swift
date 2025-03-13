@@ -14,6 +14,7 @@ struct CICDApp: App {
             ContentView()
             
             
+            
         }
     }
 }
