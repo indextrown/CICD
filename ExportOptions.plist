@@ -7,7 +7,7 @@
     <key>provisioningProfiles</key>
     <dict>
         <key>com.indextrown.CICD</key>
-        <string>CICD GitActions</string>
+        <string>CICD GItActions</string>
     </dict>
     <key>signingStyle</key>
     <string>manual</string>
