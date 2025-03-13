@@ -42,8 +42,8 @@ jobs:
     - name: Start xcode build 🛠
       run: |
         xcodebuild clean build \
-          -project CI-CD.xcodeproj \
-          -scheme CI-CD \
+          -project CICD.xcodeproj \
+          -scheme CICD \
           -destination "platform=iOS Simulator,name=iPhone 15 Pro Max,OS=17.5"
       
     # 4. 테스트 실행 단계 - swift test -v 명령어를 실행하여 Swift 프로젝트의 테스트를 실행

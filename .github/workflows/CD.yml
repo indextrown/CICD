@@ -58,24 +58,24 @@ jobs:
       - name: Archive & Export
         run: |
           xcodebuild archive \
-            -project CI-CD.xcodeproj \
-            -scheme CI-CD \
+            -project CICD.xcodeproj \
+            -scheme CICD \
             -configuration Release \
-            -archivePath build/CI-CD.xcarchive \
+            -archivePath build/CICD.xcarchive \
             CODE_SIGN_IDENTITY="iPhone Distribution: donghyeon kim (LGX4B4WC66)" \
             PROVISIONING_PROFILE_SPECIFIER="CICD GithubActions" \
             CODE_SIGN_STYLE=Manual \
             OTHER_CODE_SIGN_FLAGS="--timestamp=none"
           xcodebuild -exportArchive \
-            -archivePath build/CI-CD.xcarchive \
+            -archivePath build/CICD.xcarchive \
             -exportOptionsPlist ExportOptions.plist \
-            -exportPath build/CI-CD \
+            -exportPath build/CICD \
             OTHER_CODE_SIGN_FLAGS="--timestamp=none"
 
       # TestFlight 업로드
       - name: Upload to TestFlight
         run: |
-          xcrun altool --upload-app -f build/CI-CD/CI-CD.ipa -t ios \
+          xcrun altool --upload-app -f build/CICD/CICD.ipa -t ios \
             --apiKey "$APP_STORE_CONNECT_API_KEY" --apiIssuer "$APP_STORE_CONNECT_API_ISSUER"
         env:
           APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
