@@ -63,7 +63,7 @@ jobs:
             -configuration Release \
             -archivePath build/CICD.xcarchive \
             CODE_SIGN_IDENTITY="iPhone Distribution: donghyeon kim (LGX4B4WC66)" \
-            PROVISIONING_PROFILE_SPECIFIER="CICD GithubActions" \
+            PROVISIONING_PROFILE_SPECIFIER="CICD GItActions" \
             CODE_SIGN_STYLE=Manual \
             OTHER_CODE_SIGN_FLAGS="--timestamp=none"
           xcodebuild -exportArchive \
