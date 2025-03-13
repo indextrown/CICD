@@ -54,17 +54,20 @@ jobs:
         env:
           APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
           
-      # 자동 빌드 번호 증가 (agvtool 사용)
-      - name: Increase Build Number
+      # 자동 빌드 번호 증가 및 Info.plist 업데이트
+      - name: Increase Build Number and Update Info.plist
         run: |
-          # agvtool what-version -terse가 여러 줄을 출력할 수 있으므로 첫 번째 줄만 사용합니다.
+          # agvtool에서 첫 번째 줄만 읽어 현재 빌드 번호를 가져옴
           CURRENT_BUILD=$(agvtool what-version -terse | head -n 1)
           echo "Current build number: $CURRENT_BUILD"
           NEW_BUILD=$((CURRENT_BUILD + 1))
           echo "Setting new build number: $NEW_BUILD"
           agvtool new-version -all $NEW_BUILD
-          # 변경된 버전 확인
+          # Info.plist 파일의 경로를 프로젝트에 맞게 수정하세요.
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $NEW_BUILD" CICD/Info.plist
+          echo "Updated Info.plist CFBundleVersion to $NEW_BUILD"
           agvtool what-version -terse
+
 
 
       # Archive & Export 단계
