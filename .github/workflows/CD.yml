@@ -57,14 +57,15 @@ jobs:
       # 자동 빌드 번호 증가 (agvtool 사용)
       - name: Increase Build Number
         run: |
-          # 프로젝트 디렉토리 내에서 agvtool 명령어를 실행합니다.
-          CURRENT_BUILD=$(agvtool what-version -terse)
+          # agvtool what-version -terse가 여러 줄을 출력할 수 있으므로 첫 번째 줄만 사용합니다.
+          CURRENT_BUILD=$(agvtool what-version -terse | head -n 1)
           echo "Current build number: $CURRENT_BUILD"
           NEW_BUILD=$((CURRENT_BUILD + 1))
           echo "Setting new build number: $NEW_BUILD"
           agvtool new-version -all $NEW_BUILD
           # 변경된 버전 확인
           agvtool what-version -terse
+
 
       # Archive & Export 단계
       - name: Archive & Export
