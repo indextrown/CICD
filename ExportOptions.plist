@@ -6,8 +6,8 @@
     <string>app-store-connect</string>
     <key>provisioningProfiles</key>
     <dict>
-        <key>com.indextrown.CI-CD</key>
-        <string>CICD GithubActions</string>
+        <key>com.indextrown.CICD</key>
+        <string>CICD GItActions</string>
     </dict>
     <key>signingStyle</key>
     <string>manual</string>
